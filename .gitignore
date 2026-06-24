@@ -4,3 +4,9 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
