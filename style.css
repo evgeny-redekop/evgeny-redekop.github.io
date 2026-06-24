@@ -74,6 +74,9 @@ strong { font-weight: 650; }
   border-radius: 20px; object-fit: cover; object-position: center;
   border: 1px solid var(--border); box-shadow: var(--shadow);
 }
+.hero-about { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--border); max-width: 680px; }
+.hero-about p { margin: 0 0 14px; }
+.hero-about p:last-child { margin-bottom: 0; }
 .eyebrow {
   text-transform: uppercase; letter-spacing: .12em; font-size: .76rem;
   font-weight: 700; color: var(--accent); margin: 0 0 14px;
