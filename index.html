@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evgeny Redekop — Physicist building AI for science</title>
+  <meta name="description" content="Evgeny Redekop — experimental physicist (PhD, UC Santa Barbara) building human-in-the-loop AI tools for physics research. nanoSQUID-on-tip microscopy, moiré quantum materials, and collaborative AI analysts." />
+  <meta name="author" content="Evgeny Redekop" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Evgeny Redekop" />
+  <meta property="og:description" content="Physicist (PhD, UCSB) building AI-for-science tools." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://evgeny-redekop.github.io" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav" id="top">
+    <nav class="nav-inner">
+      <a class="nav-brand" href="#me">ER</a>
+      <ul class="nav-links">
+        <li><a href="#me">Me</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#contact">CV</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===================== ME (hero) ===================== -->
+    <section id="me" class="hero">
+      <div class="container hero-grid">
+        <img class="hero-photo" src="assets/img/evgeny.jpg" alt="Evgeny Redekop" width="640" height="640" />
+        <div class="hero-text">
+          <p class="eyebrow">Thouless Postdoctoral Fellow · University of Washington</p>
+          <h1>Evgeny Redekop</h1>
+          <p class="tagline">
+            Experimental physicist building <strong>human-in-the-loop AI tools</strong> for research —
+            and using them on real quantum-materials data.
+          </p>
+          <div class="link-row">
+            <a class="btn btn-primary" href="mailto:redekop@ucsb.edu">Email</a>
+            <a class="btn" href="https://scholar.google.com/citations?user=eXBKws4AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="btn" href="https://github.com/evgeny-redekop" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/evgeny-redekop/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="assets/CV_Redekop.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About</h2>
+        <p>
+          I'm an experimental physicist. I did my PhD at UC&nbsp;Santa&nbsp;Barbara in
+          <a href="https://www.afylab.com/" target="_blank" rel="noopener">Andrea Young's group</a>,
+          and I'm now a <strong>Thouless Postdoctoral Fellow</strong> at the University of Washington.
+        </p>
+        <p>
+          My research is about building instruments. I designed ultra-sensitive cryogenic microscopes
+          that image magnetism in quantum materials region by region — sensitive enough to capture
+          brand-new states of matter in atomically-thin materials for the first time. The through-line of
+          my work is getting a clean signal out of a noisy system, whether that system is a refrigerator a
+          fiftieth of a degree above absolute zero or a hard analysis problem.
+        </p>
+        <p>
+          Lately, the instrument I care most about is the one <em>between the data and the conclusion</em>.
+          I build <strong>collaborative AI systems for physics analysis</strong> — tools where the model
+          proposes, the scientist decides, and every figure is checked before it's believed. Low-noise
+          measurement, and low-noise reasoning.
+        </p>
+        <p class="muted">
+          Moscow State University (BSc) → Skoltech (MSc) →
+          UC&nbsp;Santa&nbsp;Barbara (PhD, NSF Quantum Foundry Fellow) →
+          University of Washington (Thouless Postdoctoral Fellow).
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects" class="section alt">
+      <div class="container">
+        <h2>Projects</h2>
+        <p class="section-lead">Building AI that does science <em>with</em> you, not instead of you.</p>
+
+        <!-- Project 1: Three Voices -->
+        <article class="card">
+          <div class="card-head">
+            <h3>Three Voices — a collaborative AI analyst</h3>
+            <span class="badge">AI · research tooling</span>
+          </div>
+          <p>
+            A human-in-the-loop AI system for analyzing experimental data. Instead of a black-box
+            "agent that runs everything," it works the way a good collaborator does: it proposes one
+            analysis step at a time into a <strong>live notebook you co-edit</strong>, defends its choices,
+            and gets corrected. The scientist owns every conclusion.
+          </p>
+
+          <!-- inline architecture diagram (no external assets) -->
+          <div class="diagram" role="img" aria-label="Architecture: data feeds an AI analyst, which proposes notebook steps; an adversarial figure-judge checks each figure; the scientist teaches durable lessons back into the system.">
+            <div class="node">Experimental<br/>data</div>
+            <div class="arrow">→</div>
+            <div class="node accent">AI analyst<br/><span>proposes a step</span></div>
+            <div class="arrow">⇄</div>
+            <div class="node">Adversarial<br/>figure-judge</div>
+            <div class="arrow">→</div>
+            <div class="node">Live notebook<br/><span>you co-edit</span></div>
+            <div class="teach">↑ scientist teaches durable lessons ↑</div>
+          </div>
+
+          <ul class="feature-list">
+            <li><strong>AI proposes, scientist owns</strong> — graduated autonomy, never auto-gated.</li>
+            <li><strong>Adversarial figure-judge</strong> — scores each figure blind, the analyst gets a right-of-reply, the judge reconsiders with the actual code to catch wrong-computation bugs.</li>
+            <li><strong>Teaching channel</strong> — a one-keystroke correction becomes a durable lesson that reshapes the system's future behavior.</li>
+            <li><strong>Persistent memory</strong> — a literature index, open questions, and run-by-run findings that carry across sessions.</li>
+          </ul>
+          <p class="muted small">Built solo over ~3 weeks. Source is currently private; happy to walk through the design.</p>
+        </article>
+
+        <!-- Project 2: JJA dissipation -->
+        <article class="card">
+          <div class="card-head">
+            <h3>Dissipation at the superconductor–insulator transition</h3>
+            <span class="badge">physics · transport</span>
+          </div>
+          <p>
+            An ongoing study of an Al/InAs Josephson-junction array in a dilution refrigerator, asking how
+            <strong>controlled dissipation</strong> reshapes the superconductor–insulator transition and the
+            anomalous-metal phase at its boundary. I run the campaign end-to-end — measurement, gate-space
+            mapping, and a BKT / dissipation-exponent analysis — much of it through the AI analyst above,
+            which is what makes a one-person campaign tractable.
+          </p>
+          <p class="muted small">Unpublished — figures available on request.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== RESEARCH ===================== -->
+    <section id="research" class="section">
+      <div class="container">
+        <h2>Research</h2>
+        <p class="section-lead">
+          Quantum instrumentation bridging condensed matter and quantum information — nanoSQUID-on-tip
+          microscopy, spatially resolved spectroscopy, and cryogenic low-noise measurement.
+        </p>
+
+        <div class="stats">
+          <div class="stat"><span class="stat-num">504</span><span class="stat-label">citations</span></div>
+          <div class="stat"><span class="stat-num">9</span><span class="stat-label">h-index</span></div>
+          <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Nature / Nat. Phys. papers</span></div>
+        </div>
+
+        <h3 class="subhead">Selected publications</h3>
+        <ul class="pubs">
+          <li>
+            <a href="https://www.nature.com/articles/s41586-024-08153-x" target="_blank" rel="noopener">Direct magnetic imaging of fractional Chern insulators in twisted MoTe<sub>2</sub></a>
+            <span class="venue">Nature 635, 584–589 (2024)</span>
+            <span class="role">first author</span>
+          </li>
+          <li>
+            <a href="https://www.nature.com/articles/s41586-025-08863-w" target="_blank" rel="noopener">Superconductivity and spin canting in spin–orbit-coupled trilayer graphene</a>
+            <span class="venue">Nature 641, 632–638 (2025)</span>
+          </li>
+          <li>
+            <a href="https://www.nature.com/articles/s41567-024-02560-7" target="_blank" rel="noopener">Intervalley coherence and intrinsic spin–orbit coupling in rhombohedral trilayer graphene</a>
+            <span class="venue">Nature Physics 20, 1413–1420 (2024)</span>
+          </li>
+          <li>
+            <a href="https://www.nature.com/articles/s41567-023-02284-0" target="_blank" rel="noopener">Realization of the Haldane Chern insulator in a moiré lattice</a>
+            <span class="venue">Nature Physics 20, 275–280 (2024)</span>
+          </li>
+          <li>
+            <a href="https://www.nature.com/articles/s41567-023-01979-8" target="_blank" rel="noopener">Intrinsic spin Hall torque in a moiré Chern magnet</a>
+            <span class="venue">Nature Physics 19, 807–813 (2023)</span>
+            <span class="role">co-first author</span>
+          </li>
+          <li>
+            <a href="https://arxiv.org/abs/2507.22354" target="_blank" rel="noopener">Universal magnetic phases in twisted bilayer MoTe<sub>2</sub></a>
+            <span class="venue">arXiv:2507.22354 (2025)</span>
+            <span class="role">co-first author</span>
+          </li>
+        </ul>
+        <p><a class="inline-link" href="https://scholar.google.com/citations?user=eXBKws4AAAAJ" target="_blank" rel="noopener">Full publication list on Google Scholar →</a></p>
+      </div>
+    </section>
+
+    <!-- ===================== CV & CONTACT ===================== -->
+    <section id="contact" class="section alt">
+      <div class="container">
+        <h2>CV &amp; Contact</h2>
+        <p>The fastest way to reach me is email. My full CV is below; happy to talk about either the physics or the AI tooling.</p>
+        <div class="link-row">
+          <a class="btn btn-primary" href="assets/CV_Redekop.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+          <a class="btn" href="mailto:redekop@ucsb.edu">redekop@ucsb.edu</a>
+          <a class="btn" href="https://scholar.google.com/citations?user=eXBKws4AAAAJ" target="_blank" rel="noopener">Scholar</a>
+          <a class="btn" href="https://github.com/evgeny-redekop" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/evgeny-redekop/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="year"></span> Evgeny Redekop</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
