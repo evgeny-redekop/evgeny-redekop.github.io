@@ -23,3 +23,30 @@
     });
   }
 })();
+
+// Mount the three ported figures. Each builder no-ops when its host is missing,
+// so this is safe on any page that does not carry all of them.
+//
+// The theme toggle above needs no hook here: the figures read their colours from
+// CSS variables, so flipping data-theme recomputes them with no JS and without
+// interrupting a running cycle.
+(function () {
+  if (typeof SiteAnim === "undefined") { return; }
+
+  if (window.buildChat) { buildChat(); }
+  if (window.buildArray) { buildArray(); }
+
+  // The sensing panels are the one figure whose layout is baked into its
+  // viewBox, so the column count is the only thing that forces a rebuild.
+  var host = document.getElementById("sensing");
+  if (host && window.buildSensing) {
+    var narrow = window.matchMedia("(max-width: 620px)");
+    var cols = function () { return narrow.matches ? 1 : 2; };
+    var build = function () { buildSensing(host, { cols: cols() }); };
+    build();
+
+    var onChange = function () { SiteAnim.rebuild(host, build); };
+    if (narrow.addEventListener) { narrow.addEventListener("change", onChange); }
+    else if (narrow.addListener) { narrow.addListener(onChange); }   // Safari < 14
+  }
+})();

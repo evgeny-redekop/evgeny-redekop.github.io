@@ -104,17 +104,9 @@
             and gets corrected. The scientist owns every conclusion.
           </p>
 
-          <!-- inline architecture diagram (no external assets) -->
-          <div class="diagram" role="img" aria-label="Architecture: data feeds an AI analyst, which proposes notebook steps; an adversarial figure-judge checks each figure; the scientist teaches durable lessons back into the system.">
-            <div class="node">Experimental<br/>data</div>
-            <div class="arrow">→</div>
-            <div class="node accent">AI analyst<br/><span>proposes a step</span></div>
-            <div class="arrow">⇄</div>
-            <div class="node">Adversarial<br/>figure-judge</div>
-            <div class="arrow">→</div>
-            <div class="node">Live notebook<br/><span>you co-edit</span></div>
-            <div class="teach">↑ scientist teaches durable lessons ↑</div>
-          </div>
+          <!-- one exchange from a real run, played back by assets/js/agent.js -->
+          <div id="chat" class="transcript" role="img" aria-label="A run of the loop: the agent reports a step and its figure, a blind referee raises two numbered gaps, the agent accepts one and contests the other, the run stops for the scientist, who rules on both, and the corrected value is recorded."></div>
+          <p class="anim-cap">One exchange from a real run, turn by turn.</p>
 
           <ul class="feature-list">
             <li><strong>AI proposes, scientist owns</strong> — graduated autonomy, never auto-gated.</li>
@@ -138,6 +130,37 @@
             mapping, and a BKT / dissipation-exponent analysis — much of it through the AI analyst above,
             which is what makes a one-person campaign tractable.
           </p>
+
+          <!-- the array and its two gates, drawn by assets/js/jja.js -->
+          <div class="anim anim-jja">
+            <div class="jja-stage">
+              <svg id="jja" viewBox="0 0 320 300" role="img" aria-label="Top view of a three by three array of cross-shaped superconducting islands, with a frame gate over the junction gaps and conducting puddles in the plaquettes. The two gates sweep in turn: the frame gate weakens the links between islands, and the top gate fills the plaquettes with the puddles that carry the dissipation.">
+                <g id="jja-puddles"></g>
+                <g id="jja-islands"></g>
+                <!-- The frame gate sits directly beneath the junction links and shares
+                     their geometry exactly, so as a link fades the gate shows through
+                     in the same place: the gate acts on the junctions and nowhere else. -->
+                <g id="jja-frame" opacity="0"></g>
+                <g id="jja-junctions"></g>
+              </svg>
+              <p class="anim-cap">Top view. Gaps drawn much wider than 20&nbsp;nm.</p>
+            </div>
+            <div class="jja-knobs">
+              <div class="knob" id="knob-vf">
+                <div class="knobhead"><span>Frame gate V<sub>f</sub></span> <span class="vlabel" id="vfval">0.0 V</span></div>
+                <div class="bar"><span id="vfbar"></span></div>
+                <p class="muted">Sits over the gaps. Weakening the links is the walk along the axis.</p>
+                <div class="regime" id="vfregime">islands strongly linked</div>
+              </div>
+              <div class="knob" id="knob-vt">
+                <div class="knobhead"><span>Top gate V<sub>t</sub></span> <span class="vlabel" id="vtval">-3.0 V</span></div>
+                <div class="bar"><span id="vtbar" style="width:100%"></span></div>
+                <p class="muted">Covers the squares. Held empty to start; letting the puddles back in turns the dissipation up.</p>
+                <div class="regime" id="vtregime">plaquettes depleted</div>
+              </div>
+            </div>
+          </div>
+
           <p class="muted small">Unpublished — figures available on request.</p>
         </article>
       </div>
@@ -151,6 +174,27 @@
           Quantum instrumentation bridging condensed matter and quantum information — nanoSQUID-on-tip
           microscopy, spatially resolved spectroscopy, and cryogenic low-noise measurement.
         </p>
+
+        <article class="card">
+          <div class="card-head">
+            <h3>nanoSQUID-on-tip microscopy</h3>
+            <span class="badge">instrumentation · imaging</span>
+          </div>
+          <p>
+            A superconducting loop a hundred nanometres across, grown on the apex of a pulled quartz
+            tube and scanned tens of nanometres above a sample. It is sensitive enough to resolve a
+            single vortex of magnetic flux, and the same sensor reads out four quite different
+            quantities depending on what you point it at.
+          </p>
+
+          <!-- four measurements, lit one at a time, drawn by assets/js/sensing.js -->
+          <div class="anim anim-sensing" id="sensing"></div>
+
+          <p class="muted small">
+            Each panel is a cartoon of a measurement the tip actually makes, with the paper it came
+            from underneath.
+          </p>
+        </article>
 
         <div class="stats">
           <div class="stat"><span class="stat-num">515</span><span class="stat-label">citations</span></div>
@@ -220,6 +264,12 @@
     </div>
   </footer>
 
+  <!-- SiteAnim first: the three figures below all gate themselves through it,
+       and main.js mounts them once they have registered their builders. -->
+  <script src="assets/js/anim.js"></script>
+  <script src="assets/js/agent.js"></script>
+  <script src="assets/js/jja.js"></script>
+  <script src="assets/js/sensing.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

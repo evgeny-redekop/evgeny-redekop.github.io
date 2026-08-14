@@ -11,6 +11,20 @@
   --card: #ffffff;
   --shadow: 0 1px 2px rgba(20, 22, 30, .04), 0 8px 24px rgba(20, 22, 30, .06);
   --maxw: 760px;
+
+  /* ---- ported figures (assets/js/*.js) ----
+     --anim-bg is the figure background AND the colour the JJA frame gate paints
+     with, because that gate means "the link is gone" and has to vanish into the
+     card. Keep the .anim rule below bound to this token; if the two drift apart
+     the junction gaps show up as pale rectangles.
+     The ink tokens carry the talk's UW palette. They lighten in dark mode
+     because #4b2e83 text on #151823 sits at 1.7:1. */
+  --anim-bg: var(--card);
+  --anim-purple: #4b2e83;
+  --anim-purple-soft: #6b4ea8;
+  --anim-gold-ink: #8a7548;
+  --anim-red-ink: #b3322c;
+  --anim-green-ink: #2e7d52;
 }
 [data-theme="dark"] {
   --bg: #0f1117;
@@ -23,6 +37,15 @@
   --border: #262a37;
   --card: #151823;
   --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+
+  /* Only the ink moves. --anim-bg follows --card on its own, and the colours
+     that paint physical objects (islands, puddles, the sensing film) stay fixed
+     in the scripts, because a sample is a lit thing on a dark card. */
+  --anim-purple: #b9a3e8;
+  --anim-purple-soft: #a98cdc;
+  --anim-gold-ink: #c8b48a;
+  --anim-red-ink: #e08b84;
+  --anim-green-ink: #6fbf95;
 }
 
 * { box-sizing: border-box; }
@@ -122,24 +145,62 @@ p { margin: 0 0 16px; }
 .feature-list { margin: 14px 0 6px; padding-left: 20px; }
 .feature-list li { margin: 7px 0; }
 
-/* ===== inline architecture diagram ===== */
-.diagram {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px;
-  background: var(--bg-alt); border: 1px dashed var(--border); border-radius: 12px;
-  padding: 20px 14px; margin: 18px 0;
+/* ===== animated figures (assets/js/*.js) =====
+   Ported from the Episteme talk. The scripts read --anim-bg and the ink tokens
+   above, so the figures follow the theme without any JS running on toggle. */
+.anim {
+  background: var(--anim-bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 14px; margin: 18px 0;
 }
-.diagram .node {
-  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-  padding: 10px 14px; text-align: center; font-size: .86rem; font-weight: 600; line-height: 1.3;
-  box-shadow: var(--shadow);
+.anim > svg { display: block; width: 100%; height: auto; }
+.anim-cap { font-size: .78rem; color: var(--muted); text-align: center; margin: 8px 0 0; }
+
+/* the array beside its two gate readouts */
+.anim-jja { display: flex; gap: 18px; align-items: center; }
+.jja-stage { flex: 0 0 290px; }
+.jja-stage .anim-cap { margin-top: 4px; }
+.jja-knobs { flex: 1 1 auto; min-width: 0; }
+
+/* Indicators rather than controls: the figure sweeps itself and the bars
+   follow. Nothing here is focusable, so nothing should look clickable. */
+.knob {
+  background: var(--bg-alt); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 12px; opacity: .55;
+  transition: opacity .25s ease, border-color .25s ease;
 }
-.diagram .node span { display: block; font-weight: 400; color: var(--muted); font-size: .76rem; }
-.diagram .node.accent { border-color: var(--accent); color: var(--accent); }
-.diagram .arrow { color: var(--muted); font-size: 1.1rem; }
-.diagram .teach {
-  flex-basis: 100%; text-align: center; color: var(--accent); font-size: .82rem;
-  font-weight: 600; margin-top: 6px;
+.knob + .knob { margin-top: 12px; }
+.knob.active { opacity: 1; border-color: var(--anim-purple); }
+.knobhead {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+  font-size: .82rem; font-weight: 700; color: var(--anim-purple);
 }
+.knob .vlabel { font-family: "SF Mono", Menlo, Consolas, monospace; color: var(--text); }
+.knob p { margin: 6px 0 0; font-size: .8rem; line-height: 1.45; }
+.bar {
+  height: 7px; border-radius: 4px; background: var(--border);
+  overflow: hidden; margin: 8px 0 0;
+}
+.bar > span { display: block; height: 100%; width: 0; background: var(--anim-purple); }
+.regime {
+  margin-top: 7px; font-size: .78rem; font-weight: 700;
+  color: var(--anim-green-ink); letter-spacing: .02em;
+}
+
+/* ===== transcript =====
+   A console panel, so it keeps its own dark colours in both site themes. */
+.transcript {
+  background: #1f1b2e; border-radius: 12px; padding: 14px 16px; margin: 18px 0;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: .86rem; line-height: 1.5; color: #d8d4e8;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, .25);
+}
+.transcript .turn { margin: .3em 0; opacity: 0; transition: opacity .35s ease; }
+.transcript .who { font-weight: 700; display: inline-block; min-width: 4.6em; }
+.transcript .skeptic .who { color: #ff8a80; }
+.transcript .orch    .who { color: #89ddff; }
+.transcript .human   .who { color: #ffffff; }
+.transcript .meta { color: #8a85a3; font-style: italic; }
+.transcript .out  { color: #ffe08a; }
 
 /* ===== stats ===== */
 .stats { display: flex; flex-wrap: wrap; gap: 14px; margin: 6px 0 10px; }
@@ -193,11 +254,16 @@ p { margin: 0 0 16px; }
   .section h2 { font-size: 1.45rem; }
   .card { padding: 20px 18px; border-radius: 14px; }
 
-  /* diagram stacks vertically, arrows point down */
-  .diagram { flex-direction: column; gap: 8px; padding: 18px 12px; }
-  .diagram .node { width: 78%; }
-  .diagram .arrow { transform: rotate(90deg); }
-  .diagram .teach { margin-top: 8px; }
+  /* the array sits above its readouts rather than beside them. Nothing in the
+     JJA drawing is text, so it takes the narrower column without degrading.
+     The sensing panels restack to one column from main.js, since their column
+     count is baked into the viewBox and needs a rebuild. */
+  .anim { padding: 10px; }
+  .anim-jja { flex-direction: column; gap: 12px; }
+  .jja-stage { flex: 0 0 auto; width: 100%; max-width: 320px; align-self: center; }
+  .jja-knobs { width: 100%; }
+  .transcript { font-size: .78rem; padding: 12px; }
+  .transcript .who { min-width: 0; margin-right: .5em; }
 
   .stats { gap: 10px; }
   .stat { flex: 1 1 0; min-width: 0; padding: 12px 8px; }
@@ -213,4 +279,8 @@ p { margin: 0 0 16px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn:hover { transform: none; }
+  /* The scripts park themselves through SiteAnim.still; these are the two
+     transitions the figures introduce in CSS. */
+  .knob { transition: none; }
+  .transcript .turn { transition: none; }
 }
