@@ -82,6 +82,10 @@ strong { font-weight: 650; }
 .nav-links { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; margin-left: auto; }
 .nav-links a { color: var(--muted); font-size: .94rem; font-weight: 500; }
 .nav-links a:hover { color: var(--text); text-decoration: none; }
+/* the blog pages mark their own nav entry, since they are real pages rather
+   than anchors and the highlight is the only cue that you have left the
+   one-page site */
+.nav-links a[aria-current="page"] { color: var(--text); font-weight: 650; }
 .theme-toggle {
   background: none; border: 1px solid var(--border); color: var(--text);
   border-radius: 8px; width: 34px; height: 30px; cursor: pointer; font-size: 1rem;
@@ -224,6 +228,63 @@ p { margin: 0 0 16px; }
 }
 .inline-link { font-weight: 600; }
 
+/* ===== blog =====
+   Posts are hand-written HTML at blog/<slug>/index.html, one folder per post so
+   a post keeps its figures beside it. They reuse the nav, the footer and every
+   token above; the long-form typography here is the only thing that is new, and
+   it is the reason .post does not carry .section (that would put the accent
+   underline from `.section h2::after` beneath every heading in the article). */
+.post-list { list-style: none; margin: 0; padding: 0; }
+.post-item { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.post-item:last-child { border-bottom: none; }
+.post-title { font-size: 1.2rem; font-weight: 650; }
+.post-meta { display: block; color: var(--muted); font-size: .85rem; margin-top: 4px; }
+.post-excerpt { margin: 10px 0 0; }
+
+.post { padding: 48px 0 64px; }
+.post-back { font-size: .9rem; margin: 0 0 18px; }
+.post h1 { font-size: clamp(1.8rem, 4.6vw, 2.4rem); line-height: 1.15; margin: 0 0 8px; letter-spacing: -.015em; }
+.post .post-meta { margin: 0 0 30px; }
+.post-foot { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--border); font-size: .9rem; }
+
+.post-body { font-size: 1.03rem; }
+.post-body h2 { font-size: 1.35rem; margin: 36px 0 10px; letter-spacing: -.01em; }
+.post-body h3 { font-size: 1.1rem; margin: 26px 0 8px; }
+.post-body ul, .post-body ol { padding-left: 22px; margin: 0 0 16px; }
+.post-body li { margin: 6px 0; }
+.post-body figure { margin: 26px 0; }
+/* White stays white in both themes: a matplotlib PNG saved with a transparent
+   background would otherwise put black axes and labels on the dark card. */
+.post-body img {
+  display: block; max-width: 100%; height: auto;
+  border: 1px solid var(--border); border-radius: 10px; background: #ffffff;
+}
+.post-body figcaption { font-size: .85rem; color: var(--muted); margin-top: 8px; }
+.post-body blockquote {
+  margin: 24px 0; padding: 2px 0 2px 16px;
+  border-left: 3px solid var(--accent); color: var(--muted);
+}
+.post-body code {
+  font-family: "SF Mono", Menlo, Consolas, monospace; font-size: .88em;
+  background: var(--bg-alt); border: 1px solid var(--border);
+  border-radius: 5px; padding: 1px 5px;
+}
+.post-body pre {
+  background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; margin: 22px 0; overflow-x: auto;
+  font-size: .86rem; line-height: 1.5;
+}
+.post-body pre code { background: none; border: none; padding: 0; font-size: inherit; }
+/* display:block lets a wide table scroll inside the column instead of pushing
+   the page sideways on a phone */
+.post-body table {
+  display: block; overflow-x: auto; border-collapse: collapse;
+  width: 100%; margin: 24px 0; font-size: .92rem;
+}
+.post-body th, .post-body td { text-align: left; padding: 8px 16px 8px 0; border-bottom: 1px solid var(--border); }
+.post-body th { font-weight: 650; }
+.post-body hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
 /* ===== footer ===== */
 .footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted); font-size: .9rem; }
 .footer .container { display: flex; justify-content: space-between; align-items: center; }
@@ -264,6 +325,10 @@ p { margin: 0 0 16px; }
   .jja-knobs { width: 100%; }
   .transcript { font-size: .78rem; padding: 12px; }
   .transcript .who { min-width: 0; margin-right: .5em; }
+
+  .post { padding: 30px 0 46px; }
+  .post-body { font-size: 1rem; }
+  .post-body h2 { font-size: 1.25rem; margin-top: 30px; }
 
   .stats { gap: 10px; }
   .stat { flex: 1 1 0; min-width: 0; padding: 12px 8px; }

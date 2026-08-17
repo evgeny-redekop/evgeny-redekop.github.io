@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  POST TEMPLATE: copy this folder, do not edit it in place.
+
+  The leading underscore keeps this folder out of the published site: GitHub
+  Pages builds the repo with Jekyll (there is no .nojekyll file), and Jekyll
+  skips anything whose name starts with "_". Every other file here has no YAML
+  front matter, so Jekyll copies it through byte for byte.
+
+  TO ADD A POST
+    1. cp -R blog/_template blog/<slug>
+       Use a short hyphenated slug; it becomes the URL /blog/<slug>/.
+    2. Fill in every REPLACE marker below: <title>, the two og: tags, the
+       description, og:url, article:published_time, the <h1>, the <time>, and
+       the body.
+    3. Add an <li class="post-item"> at the TOP of the list in blog/index.html.
+    4. Add an <item> at the TOP of the list in feed.xml, with the same URL in
+       both <link> and <guid>, and a pubDate in RFC-822 form
+       (`date -R` prints today's).
+    5. Figures go in the post folder beside this file and are referenced
+       relatively, e.g. <img src="fig1.png">. Keep them under a megabyte or so.
+
+  WHAT IS ALREADY HANDLED
+    Colours, dark mode, the nav, the footer year and responsive layout all come
+    from ../../style.css and ../../main.js. Nothing here needs a build step, so
+    `open index.html` renders the finished page.
+
+  The body below shows every element style.css knows how to style. Delete the
+  ones a given post does not use.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REPLACE post title · Evgeny Redekop</title>
+  <meta name="description" content="REPLACE one sentence; this is what shows in search results and link previews." />
+  <meta name="author" content="Evgeny Redekop" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="REPLACE post title" />
+  <meta property="og:description" content="REPLACE the same one sentence." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://evgeny-redekop.github.io/blog/REPLACE-slug/" />
+  <meta property="article:published_time" content="REPLACE-YYYY-MM-DD" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png" />
+  <link rel="alternate" type="application/rss+xml" title="Evgeny Redekop" href="../../feed.xml" />
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+  <header class="nav" id="top">
+    <nav class="nav-inner">
+      <a class="nav-brand" href="../../index.html">ER</a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#about">About</a></li>
+        <li><a href="../../index.html#projects">Projects</a></li>
+        <li><a href="../../index.html#research">Research</a></li>
+        <li><a href="../index.html" aria-current="page">Blog</a></li>
+        <li><a href="../../index.html#contact">CV</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <div class="container">
+        <p class="post-back"><a href="../index.html">← Blog</a></p>
+
+        <h1>REPLACE post title</h1>
+        <p class="post-meta"><time datetime="REPLACE-YYYY-MM-DD">REPLACE 1 January 2026</time></p>
+
+        <div class="post-body">
+          <p>
+            Opening paragraph. This is also the text to reuse as the excerpt in
+            blog/index.html and as the description in feed.xml.
+          </p>
+
+          <h2>A section heading</h2>
+          <p>
+            Body text, with an <a href="https://example.com">external link</a>, some
+            <strong>emphasis</strong>, and an inline value like <code>V_f = -1.4 V</code>.
+          </p>
+
+          <h3>A sub-heading</h3>
+          <ul>
+            <li>A list item.</li>
+            <li>Another one.</li>
+          </ul>
+
+          <figure>
+            <img src="fig1.png" alt="REPLACE: describe what the figure shows, not that it is a figure." />
+            <figcaption>Figure 1. What the panel shows and which run it came from.</figcaption>
+          </figure>
+
+          <blockquote>
+            A pulled quote, or a verbatim line from a run log.
+          </blockquote>
+
+          <pre><code>def bkt_fit(t, r):
+    """Code blocks scroll sideways rather than wrapping."""
+    return np.polyfit(1 / np.sqrt(t), np.log(r), 1)</code></pre>
+
+          <table>
+            <thead>
+              <tr><th>Run</th><th>V<sub>t</sub> (V)</th><th>T<sub>BKT</sub> (mK)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>678</td><td>-3.0</td><td>310</td></tr>
+              <tr><td>758</td><td>-1.5</td><td>240</td></tr>
+            </tbody>
+          </table>
+
+          <hr />
+
+          <p class="muted small">
+            A closing note, a caveat, or what would change my mind.
+          </p>
+        </div>
+
+        <p class="post-foot">
+          <a href="../index.html">← All posts</a>
+          &nbsp;·&nbsp;
+          <a href="mailto:eugene.redekop@gmail.com">Reply by email</a>
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="year"></span> Evgeny Redekop</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="../../main.js"></script>
+</body>
+</html>

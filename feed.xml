@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hand-maintained: add each new <item> at the top, matching the entry in
+     blog/index.html. <link> and <guid> must carry the same URL, and pubDate is
+     RFC-822 (`date -R`). Readers key off <guid>, so never reuse or edit one. -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Evgeny Redekop</title>
+    <link>https://evgeny-redekop.github.io/blog/</link>
+    <atom:link href="https://evgeny-redekop.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Findings and working notes on Josephson-junction arrays, nanoSQUID-on-tip microscopy, and human-in-the-loop AI for physics analysis.</description>
+    <language>en-us</language>
+
+    <item>
+      <title>Notes, in public</title>
+      <link>https://evgeny-redekop.github.io/blog/notes-in-public/</link>
+      <guid isPermaLink="true">https://evgeny-redekop.github.io/blog/notes-in-public/</guid>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+      <description>What this page is for, and the bar a post has to clear before it goes up.</description>
+    </item>
+  </channel>
+</rss>

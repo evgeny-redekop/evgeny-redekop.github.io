@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog · Evgeny Redekop</title>
+  <meta name="description" content="Notes and findings from the lab: Josephson-junction arrays, nanoSQUID-on-tip microscopy, and human-in-the-loop AI for physics analysis." />
+  <meta name="author" content="Evgeny Redekop" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog · Evgeny Redekop" />
+  <meta property="og:description" content="Notes and findings from the lab." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://evgeny-redekop.github.io/blog/" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon-180.png" />
+  <link rel="alternate" type="application/rss+xml" title="Evgeny Redekop" href="../feed.xml" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="nav" id="top">
+    <nav class="nav-inner">
+      <a class="nav-brand" href="../index.html">ER</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="index.html" aria-current="page">Blog</a></li>
+        <li><a href="../index.html#contact">CV</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Blog</h2>
+        <p class="section-lead">
+          Findings and working notes: the Josephson-junction-array campaign, what the
+          nanoSQUID work taught me about pulling small signals out of noise, and what
+          happens when an AI analyst does real analysis alongside me.
+        </p>
+
+        <!-- Newest post first. Each entry points at blog/<slug>/, so a post can keep
+             its figures in the same folder. Adding a post means three edits: the
+             folder, one <li> here, and one <item> in ../feed.xml. -->
+        <ul class="post-list">
+          <li class="post-item">
+            <a class="post-title" href="notes-in-public/">Notes, in public</a>
+            <span class="post-meta"><time datetime="2026-08-17">17 August 2026</time></span>
+            <p class="post-excerpt">
+              What this page is for, and the bar a post has to clear before it goes up.
+            </p>
+          </li>
+        </ul>
+
+        <p class="muted small" style="margin-top: 26px;">
+          <a href="../feed.xml">RSS feed</a> if you would rather not check back.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="year"></span> Evgeny Redekop</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Only the site chrome: the footer year and the theme toggle. main.js skips its
+       figure-mounting block on any page that does not load the animation scripts. -->
+  <script src="../main.js"></script>
+</body>
+</html>
