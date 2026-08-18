@@ -11,6 +11,14 @@
     <language>en-us</language>
 
     <item>
+      <title>How well do frontier AI models analyze measurement data?</title>
+      <link>https://evgeny-redekop.github.io/blog/frontier-models-measurement-data/</link>
+      <guid isPermaLink="true">https://evgeny-redekop.github.io/blog/frontier-models-measurement-data/</guid>
+      <pubDate>Mon, 17 Aug 2026 12:00:00 +0000</pubDate>
+      <description>I tested six frontier models on a real, open-ended analysis task from my lab: 16 datasets, four measurement campaigns, one Josephson junction array, no answer key.</description>
+    </item>
+
+    <item>
       <title>Notes, in public</title>
       <link>https://evgeny-redekop.github.io/blog/notes-in-public/</link>
       <guid isPermaLink="true">https://evgeny-redekop.github.io/blog/notes-in-public/</guid>

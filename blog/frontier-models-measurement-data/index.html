@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How well do frontier AI models analyze measurement data? · Evgeny Redekop</title>
+  <meta name="description" content="I tested six frontier models on a real, open-ended analysis task from my lab: 16 datasets, four measurement campaigns, one Josephson junction array, no answer key." />
+  <meta name="author" content="Evgeny Redekop" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How well do frontier AI models analyze measurement data?" />
+  <meta property="og:description" content="I tested six frontier models on a real, open-ended analysis task from my lab: 16 datasets, four measurement campaigns, one Josephson junction array, no answer key." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://evgeny-redekop.github.io/blog/frontier-models-measurement-data/" />
+  <meta property="og:image" content="https://evgeny-redekop.github.io/blog/frontier-models-measurement-data/scoreboard.png" />
+  <meta property="article:published_time" content="2026-08-17" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png" />
+  <link rel="alternate" type="application/rss+xml" title="Evgeny Redekop" href="../../feed.xml" />
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+  <header class="nav" id="top">
+    <nav class="nav-inner">
+      <a class="nav-brand" href="../../index.html">ER</a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#about">About</a></li>
+        <li><a href="../../index.html#projects">Projects</a></li>
+        <li><a href="../../index.html#research">Research</a></li>
+        <li><a href="../index.html" aria-current="page">Blog</a></li>
+        <li><a href="../../index.html#contact">CV</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <div class="container">
+        <p class="post-back"><a href="../index.html">← Blog</a></p>
+
+        <h1>How well do frontier AI models analyze measurement data?</h1>
+        <p class="post-meta">
+          <time datetime="2026-08-17">17 August 2026</time>
+          &nbsp;·&nbsp;
+          <a href="https://www.linkedin.com/pulse/how-well-do-frontier-models-analyze-real-measurement-data-redekop-p4drc/" target="_blank" rel="noopener">also on LinkedIn</a>
+        </p>
+
+        <div class="post-body">
+          <p>
+            Most of the models spotted an issue in my data that I had overlooked.
+          </p>
+          <p>
+            I tested six advanced models on a real experimental data analysis task from
+            my lab. There was no extra setup, just 16 datasets from four measurement
+            campaigns on a Josephson junction array, all focused on one question: what
+            does magnetic frustration do to this system? This is an open question, not a
+            benchmark, so there is no answer key. To make progress, you have to notice
+            things like gate voltages drifting between sessions, field calibration
+            changing between campaigns, and charge puddles filling unevenly and shifting
+            features in the phase map. These are the tricky details that people often
+            miss or get wrong.
+          </p>
+          <p>
+            The top-performing model scored 57 out of 112 on my rubric.
+          </p>
+          <p>
+            Still, most of the models pointed out a data-quality problem that I had
+            missed. It probably would have taken me a long time to notice it on my own. I
+            was surprised, and it was great to see a basic model with no device knowledge
+            give me a real insight about my own data. Claude Opus scored 80/112 with the
+            full harness I designed for the experiment.
+          </p>
+
+          <h2>The scoreboard</h2>
+          <p>
+            The rubric is worth 112 points, with scores of 0, 1, or 2 per item, covering
+            aspects of analysis from apparatus comprehension to how it checks the
+            uncertainty of the fits. Here is how the different models performed:
+          </p>
+
+          <figure>
+            <img src="scoreboard.png" alt="Bar chart, six models scored out of 112: Claude Opus 5 57, Claude Fable 5 55, DeepSeek V4 Flash 44, Kimi K3 42, OpenAI Sol 35, Gemini 3.1 Pro 28." />
+            <figcaption>Bare models, same task, same 112-point rubric, no harness.</figcaption>
+          </figure>
+
+          <p>
+            Nobody is close to finishing the task. Most of the models skipped the hard
+            part of fitting the data using a well-known theoretical analysis; the one
+            that did dropped it after attempting once. This type of analysis is good for
+            seeding the hypotheses but not nearly enough for full-scale analysis.
+          </p>
+          <p>
+            My take from this small experiment is that LLMs prefer simple heuristic
+            analysis to actual publication-worthy research. I believe a properly built
+            harness could push them towards solid, well-grounded analysis of the
+            experimental data.
+          </p>
+
+          <h2>The funniest thing that happened</h2>
+          <p>
+            Each model could ask an oracle, which is a separate agent with access to the
+            full device knowledge base but allowed to disclose only factual system
+            parameters. At one point, probably out of frustration, GPT-5.6 Sol sent the
+            oracle a single command: <code>oracle --help</code>. No question or context,
+            just a call for help.
+          </p>
+
+          <h2>Surprises along the way</h2>
+          <p>
+            DeepSeek is incredibly cheap and smart: about $0.04 for a full run compared
+            to $4.72 for Opus, which is a hundred times less, and in third place after
+            Claude models.
+          </p>
+          <p>
+            Kimi K3 grades as strictly as I do, so I can use it to score other tests.
+            Gemini was way off, and I was not happy with its results.
+          </p>
+          <p>
+            I also tried oh-my-pi running DeepSeek, since some people say it makes a big
+            difference over the base model. It scored 41, while DeepSeek alone scored 44
+            on the same model, task, and oracle. There was no improvement either way.
+            Based on this run, the claim of a big improvement is not supported.
+          </p>
+
+          <h2>What I think I got wrong</h2>
+          <p>
+            Before I ran this eval, I set up the harness assuming the bare model knew
+            nothing about the experiment and needed to be taught everything, like a
+            graduate student who knows undergraduate physics but not how to do research.
+            Even though Opus scored 80/112 with the full harness, after seeing how the
+            bare models performed, I think that assumption was wrong.
+          </p>
+          <p>
+            The approach of building a harness should be tailored to each model. Figure
+            out where a model is strong and where it falls short, then build support
+            around its weaknesses and reduce that support as the model improves. This is
+            similar to what Boris Cherny suggests in his
+            <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo" target="_blank" rel="noopener">interview with Y Combinator</a>,
+            which I recommend watching before you start your next agent workflow or
+            harness. I wish I had watched it earlier.
+          </p>
+          <p>
+            Next, I intend to run an ablation study on the harness to determine which
+            components are crucial and which can be dropped entirely.
+          </p>
+          <p>
+            Overall, I am not impressed by how much of the task the models could finish.
+            Still, the bare models showed me something about my own data that I had
+            missed. Both outcomes are valuable results.
+          </p>
+
+          <hr />
+
+          <p class="muted small">
+            The full scoreboard with the evidence behind every score is
+            <a href="https://claude.ai/code/artifact/57d343dd-3e52-491f-8c1f-36ba58909e33" target="_blank" rel="noopener">here</a>.
+          </p>
+        </div>
+
+        <p class="post-foot">
+          <a href="../index.html">← All posts</a>
+          &nbsp;·&nbsp;
+          <a href="mailto:eugene.redekop@gmail.com">Reply by email</a>
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="year"></span> Evgeny Redekop</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="../../main.js"></script>
+</body>
+</html>
