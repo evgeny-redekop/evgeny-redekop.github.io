@@ -17,13 +17,5 @@
       <pubDate>Mon, 17 Aug 2026 12:00:00 +0000</pubDate>
       <description>I tested six frontier models on a real, open-ended analysis task from my lab: 16 datasets, four measurement campaigns, one Josephson junction array, no answer key.</description>
     </item>
-
-    <item>
-      <title>Notes, in public</title>
-      <link>https://evgeny-redekop.github.io/blog/notes-in-public/</link>
-      <guid isPermaLink="true">https://evgeny-redekop.github.io/blog/notes-in-public/</guid>
-      <pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
-      <description>What this page is for, and the bar a post has to clear before it goes up.</description>
-    </item>
   </channel>
 </rss>
